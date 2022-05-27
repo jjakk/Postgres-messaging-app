@@ -1,0 +1,21 @@
+head
+    title Messaging App
+    link(rel="stylesheet", href="/css/common.css")
+    link(rel="stylesheet", href="/css/index.css")
+body
+    h1 Messaging App
+    form(action="/login", method="post")
+        span
+            | User ID
+            input(placeholder="ex: bob", type="text", name="user_id")
+        br
+        span
+            | Chat ID
+            input(placeholder="ex: bobs-chat", type="text", name="chat_id")
+        br
+        button(submit) Join
+    ul 
+        span Chats (ID)
+        hr
+        each chat in chats
+            li #{chat.id}

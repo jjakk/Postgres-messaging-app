@@ -1,0 +1,32 @@
+
+body{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+form{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form span input{
+    margin-left: 10px;
+}
+
+form button{
+    width: 100%;
+    background-color: mediumaquamarine;
+    color: white;
+    border-width: 0px;
+}

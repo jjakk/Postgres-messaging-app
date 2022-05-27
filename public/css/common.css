@@ -1,0 +1,20 @@
+/* These are the styles in all screens */
+
+input{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button{
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+*{
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: normal;
+}
