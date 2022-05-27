@@ -1,7 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const db = require("./db");
+const http = require('http');
+const { Server } = require("socket.io");
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
+const db = require("./db");
 const PORT = process.env.PORT || 8000;
 
 dotenv.config();
@@ -9,6 +13,8 @@ app.set("view engine", "pug");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
+
+// HTTP
 
 app.get("/" , async (req, res) => {
     const { rows: chats } = await db.query('SELECT * FROM chats', []);
@@ -31,6 +37,8 @@ app.post("/message/:user_id/:chat_id", async (req, res) => {
     const { user_id, chat_id } = req.params;
     const { message } = req.body;
     await db.query('INSERT INTO messages (chat_id, text, author_id) VALUES ($1, $2, $3)', [chat_id, message, user_id]);
+    // emit the message to the chat room
+    io.emit(`reload ${chat_id}`);
     res.redirect(`/chat/${chat_id}/${user_id}`);
 });
 
@@ -55,6 +63,6 @@ app.post("/login", async (req, res) => {
     res.redirect(`/chat/${chat_id}/${user_id}`);
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Running on port ${PORT}`);
 });

@@ -20,4 +20,6 @@ body
         form(action=`/message/${user_id}/${chat_id}`, method="post")
             input(type="text" name="message")
             button(type="submit") Send
+        script(src="/socket.io/socket.io.js")
+        script var chat_id = "#{chat_id}";
         script(src="/js/chat.js")

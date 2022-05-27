@@ -38,6 +38,7 @@ main{
     display: flex;
     background-color: white;
     flex: 10;
+    padding: 15px;
     overflow-y: auto;
 }
 
@@ -48,8 +49,8 @@ main ul{
 }
 
 main ul{
-    padding: 15px;
     margin: 0px;
+    padding: 0px;
 }
 
 main ul li{
