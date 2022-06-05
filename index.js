@@ -14,8 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-// HTTP
-
 app.get("/" , async (req, res) => {
     const { rows: chats } = await db.query('SELECT * FROM chats', []);
     res.render("index", { chats });
